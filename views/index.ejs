@@ -1,0 +1,95 @@
+
+      <div class="shorten-header">
+        <h1>Shorten URL</h1>
+        <span><h4>faster and best exprience</h4></span>
+      </div>
+      <% if(user == undefined){ %> 
+      <div class="login-alert">
+        <h1>To stop spam attacks , Login accounts are temporarily required. Dont have account? <a href="registerPanel">Signup for free here.</a></h1>
+      </div>
+      <% } %>
+
+      <% if(user && error.length>0){ %> 
+      <div class="login-alert">
+        <h1><%= error %> </a></h1>
+      </div> 
+      <% } %> 
+      <div class="form-card">
+
+
+        <div class="card-shorten">
+          <form action="" method="post" class="shorten-link-form">
+            <% if(user==undefined){ %>
+            <input disabled type="text" placeholder="Enter Your Link ( http or https:// )" name="shortenLink" />
+            <button disabled class="btn-shorten">Shorten</button>
+            <% }else{ %>
+            <input type="text" placeholder="Enter Your Link ( http or https:// )" name="shortenLink" />
+            <button class="btn-shorten">Shorten</button>
+            <% } %> 
+          </form>
+          <div class="checkbox">
+            <span>ConciseURL is a free tool to shorten a URL or concise a link.
+              Create a shortened link making it easy to remember</span>
+          </div>
+          <hr />
+
+          <table id="shorten-table">
+            <tr>
+              <th>Your Short Link</th>
+              <th></th>
+            </tr>
+            <tr>
+              <% if(user==undefined){ %> 
+              <td>-</td>
+              <td>- </td>
+              <% }else{ %>
+                <% dataShort.forEach(data=>{ %> 
+                  <tr>
+                    <td><a id="shortUrl" href="/<%= data.urlId %> " target="_blank" rel="noopener noreferrer"><%= data.shortUrl %></a></td>
+                    <td>
+                      <div class="tooltip">
+                        <a onmouseout="outFunc()" id="copyUrl">
+                          <span class="tooltiptext" id="myTooltip"></span>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M5 22q-.825 0-1.413-.587Q3 20.825 3 20V6h2v14h11v2Zm4-4q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm0 0V4v12Z"/></svg>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+              <% } %> 
+            </tr> 
+          </table>
+        </div>
+      </div>
+      <div class="shorten-subscribe">
+        <div class="card-shorten">
+          <h1 class="shorten-footer">Your ideas or suggestions mean a lot to us</h1>
+          <button class="btn-shorten">Take Survey</button>
+        </div>
+      </div>
+
+      <div class="container-faq">
+        <h2 class="faq">FAQs (Frequently Asked Question)</h2>
+        <div class="accordion">
+          <div class="icon"></div>
+          <h5>what is ConciseURL ?</h5>
+      </div>
+      <div class="panel">
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis veritatis fugiat eum earum impedit laboriosam ex temporibus? Culpa eveniet consectetur optio sit. Ipsam assumenda incidunt nisi at officia expedita cum!</p>
+      </div>
+        
+        <div class="accordion">
+          <div class="icon"></div>
+          <h5>what is URL Shorten ?</h5>
+        </div>
+          <div class="panel">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis veritatis fugiat eum earum impedit laboriosam ex temporibus? Culpa eveniet consectetur optio sit. Ipsam assumenda incidunt nisi at officia expedita cum!</p>
+          </div>
+        <div class="accordion">
+          <div class="icon"></div>
+          <h5>ConciseURL user benefit ?</h5>
+        </div>
+          <div class="panel">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis veritatis fugiat eum earum impedit laboriosam ex temporibus? Culpa eveniet consectetur optio sit. Ipsam assumenda incidunt nisi at officia expedita cum!</p>
+          </div>
+      </div>

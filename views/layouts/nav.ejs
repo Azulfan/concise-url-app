@@ -1,0 +1,24 @@
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-brand">
+      <h1 class="brand">ConciseURL</h1>
+      <img src="img/logo.png" alt="" />
+    </div>
+    <ul class="nav-list">
+      <li style="margin-right: 20px;">
+        <% if(user){ %> 
+        <a href="" class="active"><%= sessionID %> </a>
+        <% }else{ %>
+        <a href="/" class="active">Dashboard</a>
+        <% } %> 
+      </li>
+      <li>
+        <% if(user){ %> 
+          <a href="logout">Logout</a>
+          <% }else{ %>
+            <a href="loginPanel">Login</a>
+          <% } %> 
+      </li>
+    </ul>
+  </nav>
+  <!-- Akhir Navbar -->
