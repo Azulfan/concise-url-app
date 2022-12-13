@@ -4,18 +4,22 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3333;
 const expressLayout = require('express-ejs-layouts');
 const flash = require('express-flash');
 const session = require('express-session');
 
+//Passport
 const { dbLogin } = require('./src/models/db');
 const passport = require('passport');
 const initializePasport = require('./src/utils/passport-config');
 initializePasport(passport, (email) => dbLogin.findOne({ email: email }));
 
-app.set('view engine', 'ejs'); //use template engine
+//Template Layout
+app.set('view engine', 'ejs');
 app.use(expressLayout);
-app.use(express.static('src/public')); //public access file
+
+app.use(express.static('src/public'));
 app.use(flash()); //flash msg
 app.use(
   session({
@@ -39,5 +43,4 @@ app.use(passport.session());
 // Routes
 app.use('/', require('./src/routes/route'));
 
-const port = 3333;
 app.listen(port);
