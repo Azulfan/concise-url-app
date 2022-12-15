@@ -7,6 +7,7 @@ const port = process.env.PORT || 3333;
 const expressLayout = require('express-ejs-layouts');
 const flash = require('express-flash');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 //Passport
 const { dbLogin } = require('./src/models/db');
@@ -30,6 +31,11 @@ app.use(
       httpOnly: false,
       maxAge: 8 * 60 * 60 * 1000,
     },
+    store: MongoStore.create({
+      mongoUrl:
+        'mongodb://conciseUrl:aF5j1mr3P47xN5Th@ac-v6f4iut-shard-00-00.v4dsb3j.mongodb.net:27017,ac-v6f4iut-shard-00-01.v4dsb3j.mongodb.net:27017,ac-v6f4iut-shard-00-02.v4dsb3j.mongodb.net:27017/?ssl=true&replicaSet=atlas-o7rhj3-shard-0&authSource=admin&retryWrites=true&w=majority',
+      ttl: 14 * 24 * 60 * 60, //14 days
+    }),
   })
 );
 
