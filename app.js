@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3333;
@@ -24,12 +23,12 @@ app.use(flash()); //flash msg
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
       secure: false,
       httpOnly: false,
-      maxAge: 1000 * 60 * 10,
+      maxAge: 8 * 60 * 60 * 1000,
     },
   })
 );
