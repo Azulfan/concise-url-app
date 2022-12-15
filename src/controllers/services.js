@@ -51,8 +51,8 @@ const userLogout = (req, res) => {
 
 //Generate ShortURL
 const postUrl = async (req, res) => {
-  const shortenId = req.user.id;
-  const longUrl = req.body.shortenLink;
+  const shortenId = await req.user.id;
+  const longUrl = await req.body.shortenLink;
   const base = process.env.BASE;
   let urlId = Math.random()
     .toString(36)
