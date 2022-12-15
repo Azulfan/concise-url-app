@@ -51,14 +51,14 @@ const userLogout = (req, res) => {
 
 //Generate ShortURL
 const postUrl = async (req, res) => {
-  const shortenId = await req.user.userId;
-  const longUrl = await req.body.shortenLink;
   const base = process.env.BASE;
+  const longUrl = req.body.shortenLink;
   let urlId = Math.random()
     .toString(36)
     .replace(/[^a-z0-9]/gi, '')
     .substring(2, 10);
   if (validateURL(longUrl)) {
+    const shortenId = req.user.userId;
     try {
       const url = await dbShorten.findOne({ longUrl: longUrl });
       if (url == null) {
