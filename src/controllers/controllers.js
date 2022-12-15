@@ -18,7 +18,7 @@ const dashboard = async (req, res) => {
     user: req.user,
     sessionExpireTime: new Date(req.session.cookie.expires) - new Date(),
     error: req.flash('error'),
-    dataShort: await dbShorten.find({ shortenId: req.user.id }),
+    dataShort: await dbShorten.find({ shortenId: req.user.userId }),
   });
 };
 

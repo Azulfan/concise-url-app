@@ -51,7 +51,7 @@ const userLogout = (req, res) => {
 
 //Generate ShortURL
 const postUrl = async (req, res) => {
-  const shortenId = await req.session.passport.user;
+  const shortenId = await req.user.userId;
   const longUrl = await req.body.shortenLink;
   const base = process.env.BASE;
   let urlId = Math.random()
@@ -61,7 +61,8 @@ const postUrl = async (req, res) => {
   if (validateURL(longUrl)) {
     try {
       const url = await dbShorten.findOne({ longUrl: longUrl });
-      if (url == null) {
+      const user = await dbShorten.findOne({ userId: shortenId });
+      if (url == null && user) {
         const shortUrl = `${base}/${urlId}`;
         let url = new dbShorten({
           shortenId,
