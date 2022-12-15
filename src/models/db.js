@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/shortURL');
+mongoose.connect(
+  'mongodb://conciseUrl:aF5j1mr3P47xN5Th@ac-v6f4iut-shard-00-00.v4dsb3j.mongodb.net:27017,ac-v6f4iut-shard-00-01.v4dsb3j.mongodb.net:27017,ac-v6f4iut-shard-00-02.v4dsb3j.mongodb.net:27017/?ssl=true&replicaSet=atlas-o7rhj3-shard-0&authSource=admin&retryWrites=true&w=majority'
+);
 
 const UserLogin = new mongoose.Schema([
   {
