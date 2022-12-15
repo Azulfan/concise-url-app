@@ -61,8 +61,7 @@ const postUrl = async (req, res) => {
   if (validateURL(longUrl)) {
     try {
       const url = await dbShorten.findOne({ longUrl: longUrl });
-      const user = await dbShorten.findOne({ userId: shortenId });
-      if (url == null && user) {
+      if (url == null) {
         const shortUrl = `${base}/${urlId}`;
         let url = new dbShorten({
           shortenId,
