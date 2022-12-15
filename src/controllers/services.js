@@ -58,7 +58,7 @@ const postUrl = async (req, res) => {
     .replace(/[^a-z0-9]/gi, '')
     .substring(2, 10);
   if (validateURL(longUrl)) {
-    const shortenId = req.user.userId;
+    //const shortenId = req.user.userId;
     try {
       const url = await dbShorten.findOne({ longUrl: longUrl });
       if (url == null) {
